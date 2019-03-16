@@ -84,6 +84,24 @@
             </property>
            </widget>
           </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="pushButtonClear">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Сброс</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item>
@@ -96,37 +114,22 @@
              </font>
             </property>
             <property name="text">
-             <string>Осталось</string>
+             <string>До выключения</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignTop">
            <widget class="QLabel" name="labelCounter">
             <property name="font">
              <font>
-              <pointsize>16</pointsize>
+              <pointsize>22</pointsize>
              </font>
             </property>
             <property name="text">
              <string>0</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="labelSec">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>минут</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
