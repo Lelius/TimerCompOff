@@ -52,7 +52,19 @@ void MainWindow::compOff()
     carrentStatusCounter = false;
     tmr->stop();
     ui->labelInfo->setText("Выключение компьютера");
-    ExitWindowsEx(EWX_SHUTDOWN, 0);
+
+    HANDLE           hToken;
+    TOKEN_PRIVILEGES tkp   ;
+
+    ::OpenProcessToken(::GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES|TOKEN_QUERY, &hToken);
+    ::LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &tkp.Privileges[0].Luid);
+
+    tkp.PrivilegeCount = 1                   ; // set 1 privilege
+    tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+
+    // get the shutdown privilege for this process
+    ::AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, (PTOKEN_PRIVILEGES)NULL, 0);
+    ExitWindowsEx(EWX_POWEROFF|EWX_FORCE, 0);
 }
 
 void MainWindow::on_pushButtonStop_clicked()
