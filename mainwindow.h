@@ -24,10 +24,16 @@ private slots:
     void compOff();
     void decTime();
 
+    void on_pushButtonClear_clicked();
+
+    void on_pushButtonStop_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *tmr;
     QTime *t;
+    bool carrentStatusCounter;
+    bool stopStatus;
 };
 
 #endif // MAINWINDOW_H
