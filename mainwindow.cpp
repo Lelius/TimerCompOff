@@ -52,6 +52,7 @@ void MainWindow::compOff()
     carrentStatusCounter = false;
     tmr->stop();
     ui->labelInfo->setText("Выключение компьютера");
+    ExitWindowsEx(EWX_SHUTDOWN, 0);
 }
 
 void MainWindow::on_pushButtonStop_clicked()

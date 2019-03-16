@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QTimer>
 #include <QDebug>
+#include <windows.h>
 
 namespace Ui {
 class MainWindow;
