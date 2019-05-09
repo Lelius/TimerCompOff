@@ -78,6 +78,8 @@ void MainWindow::on_pushButtonStop_clicked()
 
 void MainWindow::on_pushButtonClear_clicked()
 {
+    if(carrentStatusCounter == false)
+        return;
     tmr->stop();
     tmr->setInterval(0);
     t->setHMS(0, 0, 0);
