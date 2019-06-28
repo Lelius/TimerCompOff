@@ -43,6 +43,7 @@ void MainWindow::decTime()
 {
     *t = t->addSecs(-1);
     ui->labelCounter->setText(t->toString());
+    ui->timeEdit->setTime(*t);
     if(t->hour() == 0 && t->minute() == 0 && t->second() == 0)
         compOff();
 }
