@@ -8,12 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     carrentStatusCounter = false;
     stopStatus = false;
+
+    zeroingCounterIndication();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 void MainWindow::on_pushButtonOn_clicked()
 {
@@ -39,6 +42,7 @@ void MainWindow::on_pushButtonOn_clicked()
     tmr->start(1000);
 }
 
+
 void MainWindow::decTime()
 {
     *t = t->addSecs(-1);
@@ -47,6 +51,7 @@ void MainWindow::decTime()
     if(t->hour() == 0 && t->minute() == 0 && t->second() == 0)
         compOff();
 }
+
 
 void MainWindow::compOff()
 {
@@ -68,6 +73,7 @@ void MainWindow::compOff()
     ExitWindowsEx(EWX_POWEROFF|EWX_FORCE, 0);
 }
 
+
 void MainWindow::on_pushButtonStop_clicked()
 {
     if(carrentStatusCounter == true){
@@ -77,15 +83,24 @@ void MainWindow::on_pushButtonStop_clicked()
     }
 }
 
+
 void MainWindow::on_pushButtonClear_clicked()
 {
+    zeroingCounterIndication();
+
     if(carrentStatusCounter == false)
         return;
     tmr->stop();
     tmr->setInterval(0);
-    t->setHMS(0, 0, 0);
-    ui->timeEdit->setTime(*t);
-    ui->labelCounter->setText(t->toString());
+
     carrentStatusCounter = false;
     ui->labelInfo->setText("Таймер сброшен");
+}
+
+
+void MainWindow::zeroingCounterIndication()
+{
+    t->setHMS(0, 0, 0);
+    ui->timeEdit->setTime(*t);
+    ui->labelCounter->setText("∞");
 }

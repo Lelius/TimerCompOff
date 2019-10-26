@@ -24,6 +24,7 @@ private slots:
 
     void compOff();
     void decTime();
+    void zeroingCounterIndication();
 
     void on_pushButtonClear_clicked();
 
