@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QIcon>
 #include <QTime>
 #include <QTimer>
 #include <QDebug>

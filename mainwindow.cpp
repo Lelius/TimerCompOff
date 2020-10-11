@@ -9,6 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     carrentStatusCounter = false;
     stopStatus = false;
 
+    QIcon *icon = new QIcon(":/Icon/compoff.png");
+    MainWindow::setWindowIcon(*icon);
+    MainWindow::setWindowIconText("TimerCompOff");
+    this->statusBar()->setSizeGripEnabled(false);
+
     zeroingCounterIndication();
 }
 

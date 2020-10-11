@@ -42,4 +42,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resource.qrc
 
-RC_ICONS = FirstIcon.ico
+win32: RC_ICONS = $$PWD/compoff.ico

@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/">
-        <file>FirstIcon.ico</file>
+    <qresource prefix="/Icon">
+        <file>compoff.ico</file>
+        <file>compoff.png</file>
+        <file>compoff_black_white.png</file>
     </qresource>
 </RCC>
