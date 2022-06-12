@@ -21,14 +21,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButtonOn_clicked();
 
     void compOff();
     void decTime();
     void zeroingCounterIndication();
 
+    void on_pushButtonOn_clicked();
     void on_pushButtonClear_clicked();
-
     void on_pushButtonStop_clicked();
 
 private:

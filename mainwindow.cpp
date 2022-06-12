@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     MainWindow::setWindowIconText("TimerCompOff");
     this->statusBar()->setSizeGripEnabled(false);
 
+    t = new QTime();
     zeroingCounterIndication();
 }
 
