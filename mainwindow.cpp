@@ -15,12 +15,21 @@ MainWindow::MainWindow(QWidget *parent) :
     this->statusBar()->setSizeGripEnabled(false);
 
     t = new QTime();
+
+    analogClock = new AnalogClock(this);
+    ui->horizontalLayoutAnalog->addWidget(analogClock);
+    connect(this, &MainWindow::updateTime, analogClock, &AnalogClock::updateAnalogClock);
+
+    currentTmr = new QTimer(this);
+    currentTmr->start(1000);
+
     zeroingCounterIndication();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete t;
 }
 
 
@@ -43,7 +52,7 @@ void MainWindow::on_pushButtonOn_clicked()
     *t = ui->timeEdit->time();
     ui->labelCounter->setText(t->toString());
     tmr = new QTimer(this);
-    connect(tmr, SIGNAL(timeout()), this, SLOT(decTime()));
+    connect(tmr, &QTimer::timeout, this, &MainWindow::decTime, Qt::UniqueConnection);
     carrentStatusCounter = true;
     tmr->start(1000);
 }
@@ -54,6 +63,7 @@ void MainWindow::decTime()
     *t = t->addSecs(-1);
     ui->labelCounter->setText(t->toString());
     ui->timeEdit->setTime(*t);
+    emit updateTime(*t);
     if(t->hour() == 0 && t->minute() == 0 && t->second() == 0)
         compOff();
 }
@@ -109,4 +119,12 @@ void MainWindow::zeroingCounterIndication()
     t->setHMS(0, 0, 0);
     ui->timeEdit->setTime(*t);
     ui->labelCounter->setText("∞");
+    emit updateTime(*t);
 }
+
+void MainWindow::on_timeEdit_timeChanged(const QTime &time)
+{
+    emit updateTime(time);
+}
+
+

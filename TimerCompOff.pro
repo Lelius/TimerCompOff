@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        analogclock.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        analogclock.h \
         mainwindow.h
 
 FORMS += \
